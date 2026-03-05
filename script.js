@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             originalPreview.src = e.target.result;
             resultPreview.src = e.target.result; // Temporarily show original
             resultPreview.style.opacity = '0.5';
-            
+
             dropZone.classList.add('hidden');
             previewSection.classList.remove('hidden');
             downloadSection.classList.add('hidden');
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         processBtn.disabled = true;
 
         try {
-            const response = await fetch('http://localhost:5000/remove-background', {
+            const response = await fetch('/remove-background', {
                 method: 'POST',
                 body: formData
             });
@@ -104,11 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const blob = await response.blob();
             const url = URL.createObjectURL(blob);
-            
+
             resultPreview.src = url;
             resultPreview.style.opacity = '1';
             downloadLink.href = url;
-            
+
             downloadSection.classList.remove('hidden');
             // Scroll to download section
             downloadSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
