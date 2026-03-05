@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Background Remover | Premium Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Professional AI-powered background remover. Upload your images and remove backgrounds automatically in seconds.">
+</head>
+<body class="light-theme">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">✨</span>
+                <h1>Clear<span>BG</span></h1>
+            </div>
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2 class="hero-title">Remove Backgrounds <span>Instantly</span> Using AI</h2>
+            <p class="hero-subtitle">Upload your images and let our advanced AI do the magic. Fast, free, and high-quality.</p>
+        </section>
+
+        <section class="tool-section">
+            <div id="drop-zone" class="upload-box">
+                <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg" hidden>
+                <div class="upload-content">
+                    <div class="upload-icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    </div>
+                    <h3>Choose an image or drag it here</h3>
+                    <p>Supports JPG, JPEG, PNG (Max 10MB)</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">Upload Image</button>
+                </div>
+            </div>
+
+            <div id="preview-section" class="preview-container hidden">
+                <div class="preview-actions">
+                    <button id="clear-btn" class="btn btn-outline">Clear Image</button>
+                    <button id="process-btn" class="btn btn-primary">Remove Background</button>
+                </div>
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <span class="badge">Original</span>
+                        <div class="img-wrapper">
+                            <img id="original-preview" src="" alt="Original Preview">
+                        </div>
+                    </div>
+                    <div class="preview-card">
+                        <span class="badge">Processed</span>
+                        <div class="img-wrapper checkerboard">
+                            <img id="result-preview" src="" alt="Result Preview">
+                            <div id="loading-overlay" class="loading-overlay hidden">
+                                <div class="spinner"></div>
+                                <p>Processing with AI...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="download-section hidden" id="download-section">
+                    <a id="download-link" href="#" download="removed-bg.png" class="btn btn-success btn-large">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PNG
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What is background removal?</h3>
+                    <p>Background removal is an AI-powered process that identifies the main subject of an image and removes everything else, leaving a transparent background.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Which image formats are supported?</h3>
+                    <p>We currently support JPG, JPEG, and PNG formats. All processed images are returned as transparent PNGs.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is the uploaded image stored?</h3>
+                    <p>No, your privacy is important. Images are processed in real-time and are not stored on our servers after the session ends.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How long does processing take?</h3>
+                    <p>Depending on the image complexity and server load, it usually takes between 2 to 5 seconds to process an image using our AI models.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>© 2026 Copyright & All Rights Reserved</p>
+            <p>Made by <span>Harsh Patel</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
